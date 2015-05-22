@@ -35,27 +35,21 @@
 ##
 ###############################################################################
 
-# Alterations for use in the CWSL model analysis service project.
+# Alterations for use in the CWSL model analysis service project, 2015
+
 set -o nounset
 set -o errexit
 
+VT_USER_DIR=$1
+VIRTUAL_DISPLAY=$2
+VT_FILE=$3
+
 #settings
-LOG_DIR=$HOME/.vistrails/logs
+LOG_DIR=${VT_USER_DIR}/logs
 mkdir -p ${LOG_DIR}
 Xvfb_CMD=/usr/bin/Xvfb
-VIRTUAL_DISPLAY=":6"
 VISTRAILS_DIR=${VISTRAILS_ROOT}
-VT_FILE=""
-WORKFLOW=""
-if (("$#" > "0")); then
-    VIRTUAL_DISPLAY="$1"
-fi
-if (("$#" > "1")); then
-    VT_FILE="$2"
-fi
-if (("$#" > "2")); then
-    WORKFLOW=":$3"
-fi
+
 Xvfb_PARAM="$VIRTUAL_DISPLAY -screen 0 1280x960x24"
 LOG_XVFB="$LOG_DIR/xvfb$VIRTUAL_DISPLAY.log"
 
@@ -84,7 +78,7 @@ else
 	exit 1
     fi
 fi
-echo -n "Executing VisTrails on display $VIRTUAL_DISPLAY.0 - "
+echo "Executing VisTrails on display $VIRTUAL_DISPLAY"
 cd $VISTRAILS_DIR
 export DISPLAY=$VIRTUAL_DISPLAY
-python vistrails/run.py -b $VT_FILE$WORKFLOW 
+python vistrails/run.py -b $VT_FILE -S $VT_USER_DIR
