@@ -14,10 +14,10 @@ def main(args):
     vt_file.execute()
 
 
-if __name__ == __main__:
+if __name__ == "__main__":
     """ Run a VisTrails workflow using the API. """
 
-    parser = ArgumentParser("Run a prepared VisTrails workflow file using the API")
+    parser = argparse.ArgumentParser("Run a prepared VisTrails workflow file using the API")
 
     parser.add_argument("workflow", help="The VT file to run")
 
