@@ -8,7 +8,8 @@ import vistrails.core.api as vt_api
 def main(args):
     """ Set the VisTrails pipeline running. """
 
-    vt_api.initialize()
+    vt_api.load_package("csiro.au.cwsl")
+
     vt_file = vt_api.load_vistrail(args.workflow)
     vt_file.select_latest_version()
 
