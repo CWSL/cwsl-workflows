@@ -12,8 +12,6 @@ def main(args):
     # Handle the JSON
     parameters = json.loads(args.input_params)
 
-    print(parameters)
-
     vt_api.load_package("csiro.au.cwsl")
 
     vt_file = vt_api.load_vistrail(args.workflow)
