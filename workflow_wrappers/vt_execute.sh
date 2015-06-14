@@ -5,4 +5,4 @@ source /etc/bashrc
 module load python vistrails
 
 PYTHONPATH=${PYTHONPATH}:/opt/vistrails
-./vt_execute.py "$[@]"
+./vt_execute.py "$@"
