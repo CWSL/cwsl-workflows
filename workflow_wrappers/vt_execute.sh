@@ -1,8 +1,11 @@
 #!/usr/bin/env bash
 
-source /etc/bashrc
+# Switch to the script directory
+cd /opt/cwslab-workflows/workflow_wrappers
 
+# Set up module environment
+source /etc/bashrc
 module load python vistrails
 
 PYTHONPATH=${PYTHONPATH}:/opt/vistrails
-./vt_execute.py "$@"
+python vt_execute.py "$@"
